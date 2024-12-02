@@ -89,7 +89,7 @@ export default function BreedDetails() {
         <div className="flex flex-col gap-y-12 p-8 justify-center items-center">
             <Link
                 className="hover:underline text-center"
-                href=".."
+                href="/breeds"
             >
                 &larr; <span className="text-3xl font-bold active:font-extrabold">Back to breeds list</span>
             </Link>
