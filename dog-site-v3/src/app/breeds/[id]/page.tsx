@@ -1,66 +1,48 @@
 "use client"
 
-import { useState, useEffect } from "react";
-import axios from "axios";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react"
+import axios from "axios"
+import Link from "next/link"
+import { useParams, useSearchParams } from "next/navigation"
+import { useRouter } from "next/router"
 
 export default function BreedDetails() {
-
+    const { id } = useParams()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [dogData, setDogData] = useState([])
     const [imageData, setImageData] = useState([])
+    // const searchParams = useSearchParams()
+    // const breedId = searchParams.get('breed_id')
+    // console.log(breedId)
+    // console.log(window.location.href)
+    // console.log(searchParams.toString())
 
-    const searchParams = useSearchParams();
-    const id = searchParams.get('id')
-
-    useEffect(() => {
-        if (!id) return
-        setLoading(true)
-
-        const options = {
-            method: "GET",
-            url: `/api/breeds/${id}`
-        }
-
-        axios.request(options)
-            .then(response => {
-                console.log(response.data)
-                setDogData(response.data)
-            })
-            .catch(error => {
-                console.error(error)
-                setError(error)
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-
-    }, [id])
+    // const router = useRouter()
+    // const { breed_id } = router.query
+    // console.log(router.query)
 
     useEffect(() => {
         if (!id) return
         setLoading(true)
 
-        const options = {
-            method: "GET",
-            url: `/api/images/search?breed_id=${id}`
-        }
+        // Prepare both API requests
+        const dogRequest = axios.get(`/api/breeds/${id}`)
+        const imageRequest = axios.get(`/api/images/?breed_id=${id}`)
 
-        axios.request(options)
-            .then(response => {
-                console.log(response.data)
-                setImageData(response.data)
+        // Execute both requests in parallel
+        Promise.all([dogRequest, imageRequest])
+            .then(([dogResponse, imageResponse]) => {
+                setDogData(dogResponse.data)
+                setImageData(imageResponse.data)
             })
             .catch(error => {
                 console.error(error)
-                setError(error)
+                setError('Failed to load data')
             })
             .finally(() => {
                 setLoading(false)
             })
-
     }, [id])
 
     if (loading) {
