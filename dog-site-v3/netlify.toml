@@ -1,0 +1,4 @@
+[build]
+  base = "dog-site-v3"       # Specify the relative path here
+  publish = "dog-site-v3/out" # If using static export
+  command = "npm run build" # Your build command
