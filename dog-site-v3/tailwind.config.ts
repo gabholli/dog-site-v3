@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "clouds": "url('/clouds.jpg')"
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
