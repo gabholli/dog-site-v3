@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function GET(req: { url: string | URL; }) {
+export async function GET(req) {
     const query = new URL(req.url).searchParams.get('breed_id');  // Get breed_id from the query params
 
     try {
