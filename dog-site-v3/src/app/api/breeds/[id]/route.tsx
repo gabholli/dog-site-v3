@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function GET(req, { params }) {
+export async function GET(req: any, { params }: any) {
     const { id } = params;  // Extract the breed id from the URL
 
     try {

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { NextRequest } from 'next/server';
 
-export async function GET(req) {
+export async function GET(req: NextRequest) {
     const query = new URL(req.url).searchParams.get('breed_id');  // Get breed_id from the query params
 
     try {
