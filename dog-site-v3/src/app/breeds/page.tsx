@@ -3,14 +3,15 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
+import { Dog } from "../types/types"
 
 export default function BreedList() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-    const [dogData, setDogData] = useState([])
+    const [dogData, setDogData] = useState<Dog[]>([]);
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage, setItemsPerPage] = useState(12)
+    const [itemsPerPage] = useState(12)
 
     useEffect(() => {
         setLoading(true);

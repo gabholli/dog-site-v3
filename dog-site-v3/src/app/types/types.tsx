@@ -11,3 +11,16 @@ export interface DogData {
     origin?: string
     temperament?: string
     weight?: { imperial?: string }
+}
+
+export interface Dog {
+    id: string
+    name: string
+    image: {
+        url: string
+    }
+}
+
+export interface Params {
+    id: string // The ID is expected to be a string
+}
