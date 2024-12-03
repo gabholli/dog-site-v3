@@ -1,3 +1,4 @@
 [build]
-command = "npm run build && npm run export"
-publish = "out"
+  base = "dog-site-v3"           # The folder containing your Next.js project
+  publish = ".next"    # Or use "next-app/.next" for SSR
+  command = "npm run build"   # Your build command, can be "yarn build" too
