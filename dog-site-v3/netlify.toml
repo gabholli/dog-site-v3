@@ -1,4 +1,4 @@
 [build]
-  base = "dog-site-v3"
-  command = "npm run build"  # Or "yarn build" depending on the package manager
-  publish = ".next"          # Publish the '.next' directory (SSR mode)
+  base = "dog-site-v3"       
+  publish = "next-app/.next"
+  command = "npm run build" 
