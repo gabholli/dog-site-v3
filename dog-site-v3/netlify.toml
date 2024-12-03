@@ -1,4 +1,4 @@
 [build]
   base = "dog-site-v3"       
-  publish = "next-app/.next"
+  publish = "dog-side-v3/.next"
   command = "npm run build" 
