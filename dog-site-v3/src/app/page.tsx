@@ -30,12 +30,12 @@ export default function Home() {
         minHeight: "100%", width: "100%", backgroundRepeat: "no-repeat",
         backgroundSize: "cover", backgroundPosition: "center", objectFit: "contain"
       }}>
-      <div className="bg-neutral-100 px-4 py-2 flex flex-col gap-y-4">
+      <div className="bg-neutral-200 px-4 py-2 rounded-2xl flex flex-col gap-y-4">
         <h1 className="text-center text-4xl">Dog Information Site</h1>
         <p className="text-center text-2xl">Find information about your favorite breed</p>
       </div>
       <Link
-        className="bg-neutral-100 px-4 py-2 rounded text-xl hover:underline"
+        className="bg-neutral-200 px-4 py-2 rounded-2xl text-xl hover:underline"
         href="breeds"
       >
         Find dog information
