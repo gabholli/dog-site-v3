@@ -63,7 +63,11 @@ export default function BreedList() {
     const pagination = pageNumbers.map(number => (
         <li
             key={number}
+<<<<<<< HEAD
             className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded"
+=======
+            className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded-lg"
+>>>>>>> parent of 3b173dd (Changed background color to blue in several places)
         >
             <a onClick={() => handlePageClick(number)}>{number}</a>
         </li>

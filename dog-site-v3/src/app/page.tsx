@@ -32,19 +32,27 @@ export default function Home() {
         backgroundSize: "cover", backgroundPosition: "center", objectFit: "contain"
       }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div className="bg-slate-300 px-4 py-2 flex flex-col gap-y-4">
 =======
       <div className="bg-neutral-100 px-4 py-2 flex flex-col gap-y-4">
 >>>>>>> parent of 3061960 (Changed background color and changed border radius)
+=======
+      <div className="bg-neutral-100 px-4 py-2 rounded-2xl flex flex-col gap-y-4">
+>>>>>>> parent of 3b173dd (Changed background color to blue in several places)
         <h1 className="text-center text-4xl">Dog Information Site</h1>
         <p className="text-center text-2xl">Find information about your favorite breed</p>
       </div>
       <Link
 <<<<<<< HEAD
+<<<<<<< HEAD
         className="bg-slate-300 px-4 py-2 rounded text-xl hover:underline"
 =======
         className="bg-neutral-100 px-4 py-2 rounded text-xl hover:underline"
 >>>>>>> parent of 3061960 (Changed background color and changed border radius)
+=======
+        className="bg-neutral-100 px-4 py-2 rounded-2xl text-xl hover:underline"
+>>>>>>> parent of 3b173dd (Changed background color to blue in several places)
         href="breeds"
       >
         Find dog information
