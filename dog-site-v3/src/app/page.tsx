@@ -33,10 +33,14 @@ export default function Home() {
       }}>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div className="bg-slate-300 px-4 py-2 flex flex-col gap-y-4">
 =======
       <div className="bg-neutral-100 px-4 py-2 flex flex-col gap-y-4">
 >>>>>>> parent of 3061960 (Changed background color and changed border radius)
+=======
+      <div className="bg-neutral-100 px-4 py-2 rounded-2xl flex flex-col gap-y-4">
+>>>>>>> parent of 3b173dd (Changed background color to blue in several places)
 =======
       <div className="bg-neutral-100 px-4 py-2 rounded-2xl flex flex-col gap-y-4">
 >>>>>>> parent of 3b173dd (Changed background color to blue in several places)
@@ -46,10 +50,14 @@ export default function Home() {
       <Link
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         className="bg-slate-300 px-4 py-2 rounded text-xl hover:underline"
 =======
         className="bg-neutral-100 px-4 py-2 rounded text-xl hover:underline"
 >>>>>>> parent of 3061960 (Changed background color and changed border radius)
+=======
+        className="bg-neutral-100 px-4 py-2 rounded-2xl text-xl hover:underline"
+>>>>>>> parent of 3b173dd (Changed background color to blue in several places)
 =======
         className="bg-neutral-100 px-4 py-2 rounded-2xl text-xl hover:underline"
 >>>>>>> parent of 3b173dd (Changed background color to blue in several places)

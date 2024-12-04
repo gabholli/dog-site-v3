@@ -64,7 +64,11 @@ export default function BreedList() {
         <li
             key={number}
 <<<<<<< HEAD
+<<<<<<< HEAD
             className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded"
+=======
+            className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded-lg"
+>>>>>>> parent of 3b173dd (Changed background color to blue in several places)
 =======
             className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded-lg"
 >>>>>>> parent of 3b173dd (Changed background color to blue in several places)
