@@ -94,7 +94,7 @@ export default function BreedList() {
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-3xl mb-8 text-center mt-8">There was an error loading this page...</h1>
                 <Link href="/" passHref>
-                    <div className="bg-sky-300 px-4 py-2 rounded text-xl hover:underline">Return to home</div>
+                    <div className="bg-slate-300 px-4 py-2 rounded text-xl hover:underline">Return to home</div>
                 </Link>
             </div>
         )
