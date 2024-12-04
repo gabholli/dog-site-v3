@@ -63,7 +63,7 @@ export default function BreedList() {
     const pagination = pageNumbers.map(number => (
         <li
             key={number}
-            className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded-lg"
+            className="hover:underline active:font-semibold size-8 bg-blue-100 flex justify-center items-center rounded-lg"
         >
             <a onClick={() => handlePageClick(number)}>{number}</a>
         </li>
@@ -94,7 +94,7 @@ export default function BreedList() {
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-3xl mb-8 text-center mt-8">There was an error loading this page...</h1>
                 <Link href="/" passHref>
-                    <div className="bg-neutral-100 px-4 py-2 rounded text-xl hover:underline">Return to home</div>
+                    <div className="bg-blue-100 px-4 py-2 rounded-2xl text-xl hover:underline">Return to home</div>
                 </Link>
             </div>
         )
