@@ -60,15 +60,7 @@ export default function BreedDetails() {
         return (
             <div className="flex flex-col justify-center items-center">
                 <h1 className=" text-3xl mb-8 text-center mt-8">There was an error loading this page...</h1>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <Link href="/" className="bg-sky-300 px-4 py-2 rounded text-xl hover:underline">
-=======
-                <Link href="/" className="bg-neutral-100 px-4 py-2 rounded text-xl hover:underline">
->>>>>>> parent of 3b173dd (Changed background color to blue in several places)
-=======
-                <Link href="/" className="bg-neutral-100 px-4 py-2 rounded text-xl hover:underline">
->>>>>>> parent of 3b173dd (Changed background color to blue in several places)
+                <Link href="/" className="bg-slate-300 px-4 py-2 rounded text-xl hover:underline">
                     Return to home
                 </Link>
             </div>
