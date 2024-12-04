@@ -60,7 +60,7 @@ export default function BreedDetails() {
         return (
             <div className="flex flex-col justify-center items-center">
                 <h1 className=" text-3xl mb-8 text-center mt-8">There was an error loading this page...</h1>
-                <Link href="/" className="bg-blue-100 px-4 py-2 rounded-2xl text-xl hover:underline">
+                <Link href="/" className="bg-neutral-100 px-4 py-2 rounded text-xl hover:underline">
                     Return to home
                 </Link>
             </div>
