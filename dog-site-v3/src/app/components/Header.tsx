@@ -3,7 +3,7 @@ import React from "react"
 
 export default function Header() {
     return (
-        <header className="bg-neutral-200 h-20 flex justify-center items-center
+        <header className="bg-neutral-100 h-20 flex justify-center items-center
             text-xl">
             <div className="flex gap-10">
                 <Link
