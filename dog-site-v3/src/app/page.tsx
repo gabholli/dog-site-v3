@@ -30,7 +30,8 @@ export default function Home() {
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
         minHeight: "100%", width: "100%", backgroundRepeat: "no-repeat",
         backgroundSize: "cover", backgroundPosition: "center", objectFit: "contain"
-      }}>
+      }}
+    >
       <div className="bg-slate-300 px-4 py-2 flex flex-col gap-y-4 rounded-xl">
         <h1 className="text-center text-4xl">Dog Information Site</h1>
         <p className="text-center text-2xl">Find information about your favorite breed</p>

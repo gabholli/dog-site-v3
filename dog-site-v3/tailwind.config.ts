@@ -9,7 +9,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "clouds": "url('/clouds.jpg')"
+        "clouds": "url('/clouds.jpg')",
+        "dogBackground": "url('/Boxer Puppy2.jpg')"
       },
       colors: {
         background: "var(--background)",
