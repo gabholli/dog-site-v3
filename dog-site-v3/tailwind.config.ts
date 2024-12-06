@@ -10,7 +10,7 @@ export default {
     extend: {
       backgroundImage: {
         "clouds": "url('/clouds.jpg')",
-        "dogBackground": "url('/Boxer Puppy1.jpg')"
+        "dogBackground": "url('/Big Dog With Branch.jpg')"
       },
       colors: {
         background: "var(--background)",
