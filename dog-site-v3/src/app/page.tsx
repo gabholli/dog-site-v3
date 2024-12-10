@@ -34,12 +34,12 @@ export default function Home() {
       //   backgroundSize: "cover", backgroundPosition: "center", objectFit: "contain"
       // }}
       >
-        <div className="bg-slate-300 px-4 py-2 flex flex-col gap-y-4 rounded-xl">
+        <div className="bg-neutral-100 px-4 py-2 flex flex-col gap-y-4 rounded-xl">
           <h1 className="text-center text-4xl">Dog Information Site</h1>
           <p className="text-center text-2xl">Find information about your favorite breed</p>
         </div>
         <Link
-          className="bg-slate-300 px-4 py-2 rounded-xl text-xl hover:underline"
+          className="bg-neutral-100 px-4 py-2 rounded-xl text-xl hover:underline"
           href="breeds"
         >
           Find dog information
