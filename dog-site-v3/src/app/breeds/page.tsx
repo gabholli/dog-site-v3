@@ -36,7 +36,7 @@ export default function BreedList() {
                 <Link href={`/breeds/${dog.id}`} passHref>
                     <div className="hover:underline active:font-semibold text-2xl">
                         <img
-                            className="size-80 object-cover mb-7 rounded-xl"
+                            className="size-80 object-cover mb-7 rounded-xl shadow-2xl"
                             src={dog.image.url}
                             alt={dog.name}
                         />
