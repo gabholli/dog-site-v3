@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <title>Dog Information</title>
       <link rel="shortcut icon" type="image/x-icon" href="/Boxer Puppy1.ico" />
-      <body className='grid grid-rows-[auto_1fr_auto] grid-cols-1 w-full min-h-svh'>
+      <body className='font-garamond grid grid-rows-[auto_1fr_auto] grid-cols-1 w-full min-h-svh'>
         <Header />
         <main className="flex items-center justify-center">{children}</main>
         <Footer />
