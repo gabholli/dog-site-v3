@@ -11,6 +11,16 @@ export default function Header() {
                     href="/">
                     Home
                 </Link>
+                <Link
+                    className="hover:underline"
+                    href="/ratedDogs">
+                    Dog Ratings List
+                </Link>
+                <Link
+                    className="hover:underline"
+                    href="/">
+                    Sign Up/Log In
+                </Link>
             </div>
         </header>
     )
