@@ -6,7 +6,6 @@ export default function Footer() {
         <footer className="bg-neutral-100 h-20 flex justify-center items-center
             text-xl">
             <h1>&#169;2024 Dog Info Site</h1>
-            <RatingsStar />
         </footer>
     )
 }
