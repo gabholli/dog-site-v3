@@ -4,8 +4,8 @@ import React from "react"
 export default function Header() {
     return (
         <header className="bg-neutral-100 h-20 flex justify-center items-center
-            text-xl">
-            <div className="flex gap-10">
+            md:text-xl">
+            <div className="flex gap-4 md:gap-10">
                 <Link
                     className="hover:underline"
                     href="/">
@@ -18,7 +18,7 @@ export default function Header() {
                 </Link>
                 <Link
                     className="hover:underline"
-                    href="/">
+                    href="/signup">
                     Sign Up/Log In
                 </Link>
             </div>
