@@ -1,5 +1,4 @@
 import React from "react"
-import RatingsStar from "./ratingsStar"
 
 export default function Footer() {
     return (
