@@ -1,3 +1,5 @@
+"use client"
+
 import { createContext, useEffect, useState, useContext } from "react"
 import { supabase } from "../database/supabaseClient"
 import toast from 'react-hot-toast'

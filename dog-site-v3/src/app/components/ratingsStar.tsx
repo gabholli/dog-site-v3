@@ -2,8 +2,10 @@
 
 import { SetStateAction, useState } from "react"
 import { FaStar } from "react-icons/fa"
+import { UserAuth } from '../context/AuthContext'
 
 export default function RatingsStar() {
+    const { session } = UserAuth()
     const [rating, setRating] = useState<number>(0)
     const [hoverValue, setHoverValue] = useState<number | undefined>(undefined)
 
@@ -36,6 +38,7 @@ export default function RatingsStar() {
                         onClick={() => handleClickStar(index + 1)}
                         onMouseOver={() => handleMouseOverStar(index + 1)}
                         onMouseLeave={() => handleMouseLeaveStar()}
+                        // disabled={!session}
                         style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
                     >
                         <FaStar
