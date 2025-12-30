@@ -1,7 +1,12 @@
+"use client"
+
 import Link from "next/link"
 import React from "react"
+import { UserAuth } from "../context/AuthContext"
 
 export default function Header() {
+    const { session, signOut } = UserAuth()
+
     return (
         <header className="bg-neutral-100 h-20 flex justify-center items-center
             md:text-xl">
@@ -16,11 +21,22 @@ export default function Header() {
                     href="/ratedDogs">
                     Dog Ratings List
                 </Link>
-                <Link
+                {!session && (<Link
+                    href="/signup"
                     className="hover:underline"
-                    href="/signup">
+                >
                     Sign Up/Log In
                 </Link>
+                )
+                }
+                {session && (<button
+                    className="hover:underline"
+                    onClick={signOut}
+                >
+                    Sign Out
+                </button>
+                )
+                }
             </div>
         </header>
     )

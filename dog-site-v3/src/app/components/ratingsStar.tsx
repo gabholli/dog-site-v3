@@ -17,16 +17,22 @@ export default function RatingsStar() {
     const stars = Array(5).fill(0)
 
     function handleMouseOverStar(value: number) {
-        setHoverValue(value)
+        if (session) {
+            setHoverValue(value)
+        }
     }
 
     function handleMouseLeaveStar() {
-        setHoverValue(undefined)
+        if (session) {
+            setHoverValue(undefined)
+        }
     }
 
 
     function handleClickStar(value: number) {
-        setRating(value)
+        if (session) {
+            setRating(value)
+        }
     }
 
     return (
@@ -38,7 +44,6 @@ export default function RatingsStar() {
                         onClick={() => handleClickStar(index + 1)}
                         onMouseOver={() => handleMouseOverStar(index + 1)}
                         onMouseLeave={() => handleMouseLeaveStar()}
-                        // disabled={!session}
                         style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
                     >
                         <FaStar
