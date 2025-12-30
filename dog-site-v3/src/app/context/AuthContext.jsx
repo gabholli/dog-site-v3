@@ -8,6 +8,7 @@ const AuthContext = createContext()
 
 export default function AuthContextProvider({ children }) {
     const [session, setSession] = useState(undefined)
+    const [page, setPage] = useState()
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -70,7 +71,7 @@ export default function AuthContextProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ session, signUpNewUser, signInUser, signOut }}>
+        <AuthContext.Provider value={{ session, page, setPage, signUpNewUser, signInUser, signOut }}>
             {children}
         </AuthContext.Provider>
     )

@@ -4,13 +4,16 @@ import axios from "axios"
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { Dog } from "../types/types"
+import { UserAuth } from "../context/AuthContext"
 
 export default function BreedList() {
+    const { page, setPage } = UserAuth()
+
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-    const [dogData, setDogData] = useState<Dog[]>([]);
+    const [dogData, setDogData] = useState<Dog[]>([])
 
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(page || 1)
     const [itemsPerPage] = useState(12)
 
     useEffect(() => {
@@ -58,6 +61,7 @@ export default function BreedList() {
 
     function handlePageClick(number: React.SetStateAction<number>) {
         setCurrentPage(number)
+        setPage(number)
     }
 
     const pagination = pageNumbers.map(number => (
