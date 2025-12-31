@@ -30,8 +30,6 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
                 .select()
                 .eq("user_id", session.user.id)
                 .eq("breed_id", dog.id)
-                .order("created_at", { ascending: false })
-                .limit(1)
                 .maybeSingle()
 
             if (data) {
@@ -80,21 +78,17 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
                     breed_id: dog.id,
                     image: dog.image.url,
                     rating: value
-                }, {
-                    onConflict: 'user_id,breed_id'
-                })
+                },
+                    { onConflict: "user_id,breed_id" })
                 .select()
 
             setRating(value)
 
-            if (error) {
-                console.error("Error: ", error)
-                setIsUpdating(false)
-                return
-            }
+            if (error) throw error
 
+            setIsUpdating(false)
         }
-        setIsUpdating(false)
+
     }
 
     return (
