@@ -21,7 +21,10 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
 
     useEffect(() => {
         async function detectRatings() {
-            if (!session || !dog) return
+            if (!session || !dog) {
+                setRating(0)
+                return
+            }
             const { data, error } = await supabase
                 .from('ratings')
                 .select()
