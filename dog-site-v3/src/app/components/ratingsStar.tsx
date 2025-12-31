@@ -3,8 +3,9 @@
 import { SetStateAction, useState } from "react"
 import { FaStar } from "react-icons/fa"
 import { UserAuth } from '../context/AuthContext'
+import { Dog } from "../types/types"
 
-export default function RatingsStar() {
+export default function RatingsStar({ dog }: { dog: Dog }) {
     const { session } = UserAuth()
     const [rating, setRating] = useState<number>(0)
     const [hoverValue, setHoverValue] = useState<number | undefined>(undefined)

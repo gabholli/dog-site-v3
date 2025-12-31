@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { Dog } from "../types/types"
 import { UserAuth } from "../context/AuthContext"
+import RatingsStar from "../components/ratingsStar"
 
 export default function BreedList() {
     const { page, setPage } = UserAuth()
@@ -35,7 +36,7 @@ export default function BreedList() {
 
     const dogBreedList = dogData?.map(dog => {
         return (
-            <div className="text-center" key={dog.id}>
+            <div className="text-center flex flex-col gap-y-2" key={dog.id}>
                 <Link href={`/breeds/${dog.id}`} passHref>
                     <div className="hover:underline active:font-semibold text-2xl">
                         <img
@@ -46,6 +47,7 @@ export default function BreedList() {
                         {dog.name}
                     </div>
                 </Link>
+                <RatingsStar dog={dog} />
             </div>
         )
     })
