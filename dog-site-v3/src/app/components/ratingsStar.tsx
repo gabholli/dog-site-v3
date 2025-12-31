@@ -1,12 +1,14 @@
 "use client"
 
-import { SetStateAction, useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 import { FaStar } from "react-icons/fa"
 import { UserAuth } from '../context/AuthContext'
 import { Dog } from "../types/types"
+import { supabase } from "../database/supabaseClient"
 
 export default function RatingsStar({ dog }: { dog: Dog }) {
     const { session } = UserAuth()
+    const [isUpdating, setIsUpdating] = useState(false)
     const [rating, setRating] = useState<number>(0)
     const [hoverValue, setHoverValue] = useState<number | undefined>(undefined)
 
@@ -16,6 +18,29 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
     }
 
     const stars = Array(5).fill(0)
+
+    useEffect(() => {
+        async function detectRatings() {
+            if (!session || !dog) return
+            const { data, error } = await supabase
+                .from('ratings')
+                .select()
+                .eq("user_id", session.user.id)
+                .eq("breed_id", dog.id)
+                .maybeSingle()
+
+            if (data) {
+                setRating(data.rating)
+            }
+            if (error) {
+                console.error("Error: ", error)
+                return
+            }
+
+        }
+
+        detectRatings()
+    }, [session, dog])
 
     function handleMouseOverStar(value: number) {
         if (session) {
@@ -30,10 +55,36 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
     }
 
 
-    function handleClickStar(value: number) {
-        if (session) {
+    // function handleClickStar(value: number) {
+    //     if (session) {
+    //         setRating((value))
+    //     }
+    // }
+
+    async function handleClickStar(value: number) {
+        if (!session || !dog || isUpdating) {
+            return
+        } else if (session) {
+            setIsUpdating(true)
+
+            const { error } = await supabase
+                .from('ratings')
+                .upsert({
+                    breed: dog.name,
+                    user_id: session.user.id,
+                    breed_id: dog.id,
+                    image: dog.image.url,
+                    rating: value
+                })
+                .select()
+
             setRating(value)
+
+            if (error) throw error
+
+            setIsUpdating(false)
         }
+
     }
 
     return (
