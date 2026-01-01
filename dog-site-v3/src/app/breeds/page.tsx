@@ -4,13 +4,17 @@ import axios from "axios"
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { Dog } from "../types/types"
+import { UserAuth } from "../context/AuthContext"
+import RatingsStar from "../components/ratingsStar"
 
 export default function BreedList() {
+    const { page, setPage } = UserAuth()
+
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-    const [dogData, setDogData] = useState<Dog[]>([]);
+    const [dogData, setDogData] = useState<Dog[]>([])
 
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(page || 1)
     const [itemsPerPage] = useState(12)
 
     useEffect(() => {
@@ -32,7 +36,7 @@ export default function BreedList() {
 
     const dogBreedList = dogData?.map(dog => {
         return (
-            <div className="text-center" key={dog.id}>
+            <div className="text-center flex flex-col gap-y-2" key={dog.id}>
                 <Link href={`/breeds/${dog.id}`} passHref>
                     <div className="hover:underline active:font-semibold text-2xl">
                         <img
@@ -43,6 +47,7 @@ export default function BreedList() {
                         {dog.name}
                     </div>
                 </Link>
+                <RatingsStar dog={dog} />
             </div>
         )
     })
@@ -58,6 +63,7 @@ export default function BreedList() {
 
     function handlePageClick(number: React.SetStateAction<number>) {
         setCurrentPage(number)
+        setPage(number)
     }
 
     const pagination = pageNumbers.map(number => (
