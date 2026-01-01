@@ -46,7 +46,6 @@ export default function ratedDogsList() {
                         alt="Dog item" />
                     {item.breed}
                 </Link>
-
             </div>
         )
     })
