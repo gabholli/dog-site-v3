@@ -51,6 +51,8 @@ export default function RatedDogsList() {
                         <p>Rating: {item.rating}</p>
                     </div>
                 </Link>
+                <button>Show Modal</button>
+                <DeleteModal />
             </div>
         )
     })
