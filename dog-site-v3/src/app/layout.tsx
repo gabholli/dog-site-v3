@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AuthContextProvider from './context/AuthContext'
+import BackToTopButton from './components/backToTopButton'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             position="bottom-left"
             reverseOrder={false}
           />
+          <BackToTopButton />
         </AuthContextProvider>
       </body>
     </html>
