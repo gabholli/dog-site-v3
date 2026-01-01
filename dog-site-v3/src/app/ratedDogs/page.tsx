@@ -9,6 +9,7 @@ import DeleteModal from '../components/DeleteModal'
 
 export default function RatedDogsList() {
     const { session } = UserAuth()
+    const [showModal, setShowModal] = useState<boolean>(false)
     const [ratingsList, setRatingsList] = useState<Rating[]>([])
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -51,8 +52,13 @@ export default function RatedDogsList() {
                         <p>Rating: {item.rating}</p>
                     </div>
                 </Link>
-                <button>Show Modal</button>
-                <DeleteModal />
+                <button
+                    onClick={() => setShowModal(true)}
+                >Show Modal</button>
+                <DeleteModal
+                    isVisible={showModal}
+                    onClose={() => setShowModal(false)}
+                />
             </div>
         )
     })
