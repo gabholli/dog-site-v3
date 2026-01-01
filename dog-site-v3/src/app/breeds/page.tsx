@@ -18,7 +18,7 @@ export default function BreedList() {
     const [itemsPerPage] = useState(12)
 
     useEffect(() => {
-        setLoading(true);
+        setLoading(true)
 
         // Fetch from local API route (not external API)
         axios
