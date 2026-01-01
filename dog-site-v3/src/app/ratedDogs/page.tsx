@@ -83,6 +83,17 @@ export default function ratedDogsList() {
                     </div>
                 </>
             )}
+            {session && ratingsMap.length === 0 && (
+                <div className='flex justify-center items-center text-3xl text-center'>
+                    <p>Add from within website to store your ratings!</p>
+                </div>
+            )}
+
+            {!session && (
+                <div className='flex justify-center items-center text-3xl text-center'>
+                    <p>Log in to store your ratings!</p>
+                </div>
+            )}
 
         </main>
     )
