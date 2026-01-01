@@ -52,14 +52,14 @@ export default function RatedDogsList() {
                         <p>Rating: {item.rating}</p>
                     </div>
                 </Link>
-                <button
+                {/* <button
                     onClick={() => setShowModal(true)}
                 >Show Modal</button>
                 <DeleteModal
                     isVisible={showModal}
                     onClose={() => setShowModal(false)}
                     item={item}
-                />
+                /> */}
             </div>
         )
     })

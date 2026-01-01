@@ -30,7 +30,10 @@ export default function DeleteModal(
             .eq("user_id", session.user.id)
             .eq('breed_id', item.breed_id)
 
-        if (error) throw error
+        if (error) {
+            console.error("Error: ", error)
+            return
+        }
         toast("Breed removed from ratings!")
         onClose()
     }
