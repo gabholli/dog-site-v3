@@ -34,7 +34,7 @@ export default function ratedDogsList() {
 
     }, [session])
 
-    const ratingsMap = ratingsList?.map(item => {
+    const ratingsMap = ratingsList.sort((a, b) => a.rating - b.rating)?.map(item => {
         return (
             <div key={item.breed_id} className="text-center flex flex-col gap-y-2">
                 <Link
@@ -44,7 +44,10 @@ export default function ratedDogsList() {
                     <img className="size-80 object-cover mb-7 rounded-xl shadow-2xl"
                         src={item.image}
                         alt="Dog item" />
-                    {item.breed}
+                    <div>
+                        <h1>{item.breed}</h1>
+                        <p>Rating: {item.rating}</p>
+                    </div>
                 </Link>
             </div>
         )
@@ -72,9 +75,15 @@ export default function ratedDogsList() {
 
     return (
         <main className="flex flex-col justify-center items-center p-8 gap-y-8 bg-cover bg-center">
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                {ratingsMap}
-            </div>
+            {session && ratingsList.length > 0 && (
+                <>
+                    <h1 className='text-3xl mb-2'>Ratings Summary</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                        {ratingsMap}
+                    </div>
+                </>
+            )}
+
         </main>
     )
 }
