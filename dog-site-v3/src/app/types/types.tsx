@@ -22,5 +22,12 @@ export interface Dog {
 }
 
 export interface Params {
-    id: string // The ID is expected to be a string
+    id: string
+}
+
+export interface Rating {
+    breed_id: number
+    image: string
+    breed: string
+    rating: number
 }

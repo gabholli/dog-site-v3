@@ -4,10 +4,11 @@ import { UserAuth } from '../context/AuthContext'
 import { useEffect, useState } from 'react'
 import { supabase } from "../database/supabaseClient"
 import Link from "next/link"
+import { Rating } from '../types/types'
 
 export default function RatedDogsList() {
     const { session } = UserAuth()
-    const [ratingsList, setRatingsList] = useState<[]>([])
+    const [ratingsList, setRatingsList] = useState<Rating[]>([])
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
