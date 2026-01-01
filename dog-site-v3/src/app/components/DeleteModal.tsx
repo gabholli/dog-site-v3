@@ -1,7 +1,15 @@
-export default function DeleteModal({ isVisible, onClose }: { isVisible: boolean, onClose: () => void }) {
+export default function DeleteModal(
+    {
+        isVisible,
+        onClose
+    }:
+        {
+            isVisible: boolean,
+            onClose: () => void
+        }) {
     if (!isVisible) return null
 
-    function handleClose(e) {
+    function handleClose(e: { target: { id: string } }) {
         if (e.target.id === "wrapper") onClose()
     }
 
@@ -9,7 +17,7 @@ export default function DeleteModal({ isVisible, onClose }: { isVisible: boolean
         <div
             className="fixed inset-0 flex
                 justify-center items-center m-4"
-            onClick={handleClose}
+            onClick={() => handleClose}
             id="wrapper"
         >
             <div className="flex flex-col">
