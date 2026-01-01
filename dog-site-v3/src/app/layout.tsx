@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AuthContextProvider from './context/AuthContext'
-import BackToTopButton from './components/backToTopButton'
+import BackToTopButton from './components/BackToTopButton'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

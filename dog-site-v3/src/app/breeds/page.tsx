@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { Dog } from "../types/types"
 import { UserAuth } from "../context/AuthContext"
-import RatingsStar from "../components/ratingsStar"
+import RatingsStar from "../components/RatingsStar"
 
 export default function BreedList() {
     const { page, setPage } = UserAuth()
