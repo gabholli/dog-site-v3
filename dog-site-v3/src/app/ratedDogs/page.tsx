@@ -58,6 +58,7 @@ export default function RatedDogsList() {
                 <DeleteModal
                     isVisible={showModal}
                     onClose={() => setShowModal(false)}
+                    item={item}
                 />
             </div>
         )
