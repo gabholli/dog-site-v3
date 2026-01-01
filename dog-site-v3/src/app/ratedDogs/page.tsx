@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from "../database/supabaseClient"
 import Link from "next/link"
 
-export default function ratedDogsList() {
+export default function RatedDogsList() {
     const { session } = UserAuth()
     const [ratingsList, setRatingsList] = useState<any[]>([])
     const [loading, setLoading] = useState(false)

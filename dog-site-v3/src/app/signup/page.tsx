@@ -28,7 +28,7 @@ export default function Signup() {
             } else {
                 setError(result.error.message)
             }
-        } catch (err) {
+        } catch {
             setError("An unexpected error occurred.")
         } finally {
             setLoading(false)

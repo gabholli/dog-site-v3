@@ -43,7 +43,7 @@ export default function Login() {
             <form onSubmit={handleSignIn} className="max-w-md m-auto p-4 md:p-20">
                 <h2 className="font-bold pb-2">Sign in</h2>
                 <p>
-                    Don't have an account yet? <Link className="text-blue-500" href="/signup">Sign up</Link>
+                    {"Don't have an account yet?"} <Link className="text-blue-500" href="/signup">Sign up</Link>
                 </p>
                 <div className="flex flex-col py-4">
                     {/* <label htmlFor="Email">Email</label> */}
