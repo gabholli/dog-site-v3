@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export default function RatedDogsList() {
     const { session } = UserAuth()
-    const [ratingsList, setRatingsList] = useState<any[]>([])
+    const [ratingsList, setRatingsList] = useState<[]>([])
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
