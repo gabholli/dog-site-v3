@@ -1,6 +1,6 @@
 "use client"
 
-import { SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { FaStar } from "react-icons/fa"
 import { UserAuth } from '../context/AuthContext'
 import { Dog } from "../types/types"
@@ -14,7 +14,7 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
 
     const colors = {
         orange: "#F2C265",
-        grey: "a9a9a9"
+        grey: "#a9a9a9"
     }
 
     const stars = Array(5).fill(0)
@@ -65,31 +65,32 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
     // }
 
     async function handleClickStar(value: number) {
-        if (!session || !dog || isUpdating) {
-            return
-        } else if (session) {
-            setIsUpdating(true)
+        if (!session || !dog || isUpdating) return
 
-            const { error } = await supabase
-                .from('ratings')
-                .upsert({
-                    breed: dog.name,
-                    user_id: session.user.id,
-                    breed_id: dog.id,
-                    image: dog.image.url,
-                    rating: value
-                },
-                    { onConflict: "user_id,breed_id" })
-                .select()
+        setIsUpdating(true)
 
-            setRating(value)
+        const { error } = await supabase
+            .from('ratings')
+            .upsert({
+                breed: dog.name,
+                user_id: session.user.id,
+                breed_id: dog.id,
+                image: dog.image.url,
+                rating: value
+            },
+                { onConflict: "user_id,breed_id" })
+            .select()
 
-            if (error) throw error
-
+        if (error) {
+            console.error("Error: ", error)
             setIsUpdating(false)
+            return
         }
+        setRating(value)
 
+        setIsUpdating(false)
     }
+
 
     return (
         <div>
@@ -100,6 +101,7 @@ export default function RatingsStar({ dog }: { dog: Dog }) {
                         onClick={() => handleClickStar(index + 1)}
                         onMouseOver={() => handleMouseOverStar(index + 1)}
                         onMouseLeave={() => handleMouseLeaveStar()}
+                        disabled={!session || isUpdating}
                         style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
                     >
                         <FaStar
