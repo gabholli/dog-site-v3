@@ -1,7 +1,7 @@
 [build]
   base = "dog-site-v3"           # The folder containing your Next.js project
   publish = ".next"    # Or use "next-app/.next" for SSR
-  command = "npm install --legacy-peer-deps && npm run build"   # Your build command, can be "yarn build" too
+  command = "npm run build"   # Your build command, can be "yarn build" too
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
