@@ -7,20 +7,22 @@ export default function DeleteModal(
     {
         isVisible,
         onClose,
-        item
+        item,
+        onDelete
 
     }:
         {
             isVisible: boolean,
             onClose: () => void,
-            item: Rating
+            item: Rating,
+            onDelete: () => void
         }) {
     if (!isVisible) return null
 
     const { session } = UserAuth()
 
-    function handleClose(e: { target: { id: string } }) {
-        if (e.target.id === "wrapper") onClose()
+    function handleClose(e: React.MouseEvent<HTMLDivElement>) {
+        if (e.currentTarget.id === "wrapper") onClose()
     }
 
     async function deleteBreed() {
@@ -35,6 +37,7 @@ export default function DeleteModal(
             return
         }
         toast("Breed removed from ratings!")
+        onDelete()
         onClose()
     }
 
@@ -42,7 +45,7 @@ export default function DeleteModal(
         <div
             className="fixed inset-0 flex
                 justify-center items-center m-4"
-            onClick={() => handleClose}
+            onClick={(e) => handleClose(e)}
             id="wrapper"
         >
             <div className="flex flex-col">

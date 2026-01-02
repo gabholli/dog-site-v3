@@ -9,7 +9,7 @@ import DeleteModal from '../components/DeleteModal'
 
 export default function RatedDogsList() {
     const { session } = UserAuth()
-    const [showModal, setShowModal] = useState<boolean>(false)
+    const [selectedItem, setSelectedItem] = useState<Rating | null>(null)
     const [ratingsList, setRatingsList] = useState<Rating[]>([])
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -52,17 +52,17 @@ export default function RatedDogsList() {
                         <p>Rating: {item.rating}</p>
                     </div>
                 </Link>
-                {/* <button
-                    onClick={() => setShowModal(true)}
-                >Show Modal</button>
-                <DeleteModal
-                    isVisible={showModal}
-                    onClose={() => setShowModal(false)}
-                    item={item}
-                /> */}
+                <button
+                    onClick={() => setSelectedItem(item)}
+                >Remove</button>
             </div>
         )
     })
+
+    function handleDelete(breedId: number) {
+        const filteredRatings = ratingsList.filter(item => item.breed_id !== breedId)
+        setRatingsList(filteredRatings)
+    }
 
     if (loading) {
         return (
@@ -104,6 +104,14 @@ export default function RatedDogsList() {
                 <div className='flex justify-center items-center text-3xl text-center'>
                     <p>Log in to store your ratings!</p>
                 </div>
+            )}
+            {selectedItem && (
+                <DeleteModal
+                    isVisible={!!selectedItem}
+                    onClose={() => setSelectedItem(null)}
+                    item={selectedItem}
+                    onDelete={() => handleDelete(selectedItem.breed_id)}
+                />
             )}
 
         </main>
