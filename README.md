@@ -4,10 +4,10 @@ Dog Information Website
 ## Description
 This project contains files for a dog information website, created using the following:
 
-- React.js
 - TypeScript
 - Tailwind CSS
 - Next.js
+- Supabase
 
 ## Getting Started
 ### Dependencies
