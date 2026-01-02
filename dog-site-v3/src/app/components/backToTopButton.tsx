@@ -27,7 +27,8 @@ export default function BackToTopButton() {
         <div>
             {backToTopButton && (
                 <button
-                    className="fixed bg-neutral-200 bottom-10 right-10 size-10 lg:size-16 text-2xl"
+                    className="fixed bg-neutral-200 bottom-10 right-10 size-10 lg:size-16 text-2xl
+                        rounded-full pt-1"
                     onClick={scrollUp}>
                     ^
                 </button>
