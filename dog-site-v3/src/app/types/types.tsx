@@ -33,6 +33,6 @@ export interface Rating {
 }
 
 export interface RatingOption {
-    value: number
+    value: number | null
     label: string
 }
