@@ -109,7 +109,7 @@ export default function RatedDogsList() {
     }
 
     return (
-        <main className="flex flex-col justify-center items-center p-8 gap-y-8 bg-cover bg-center">
+        <main className="flex flex-col justify-center items-center p-8 gap-y-8">
             {session && ratingsList.length > 0 && (
                 <>
                     {selectedRatings.length > 0 && <h1 className='text-3xl text-center'>Ratings Summary</h1>}
