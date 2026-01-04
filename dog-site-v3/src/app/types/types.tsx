@@ -31,3 +31,8 @@ export interface Rating {
     breed: string
     rating: number
 }
+
+export interface RatingOption {
+    value: number
+    label: string
+}
