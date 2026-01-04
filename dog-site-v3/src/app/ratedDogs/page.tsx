@@ -52,7 +52,7 @@ export default function RatedDogsList() {
         return item.rating === filterValue
     })
 
-    const ratingsMap = selectedRatings.sort((a, b) => a.rating - b.rating)?.map(item => {
+    const ratingsMap = [...selectedRatings].sort((a, b) => a.rating - b.rating)?.map(item => {
         return (
             <div key={item.breed_id} className="text-center flex flex-col gap-y-2">
                 <Link
@@ -111,14 +111,15 @@ export default function RatedDogsList() {
         <main className="flex flex-col justify-center items-center p-8 gap-y-8 bg-cover bg-center">
             {session && ratingsList.length > 0 && (
                 <>
-                    <h1 className='text-3xl mb-2'>Ratings Summary</h1>
+                    {selectedRatings.length > 0 && <h1 className='text-3xl mb-2'>Ratings Summary</h1>}
+                    {selectedRatings.length === 0 && <h1 className='text-3xl mb-2'>No ratings for this filter.</h1>}
                     <Select options={options} onChange={handleChange} />
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         {ratingsMap}
                     </div>
                 </>
             )}
-            {session && ratingsMap.length === 0 && (
+            {session && ratingsList.length === 0 && (
                 <div className='flex justify-center items-center text-3xl text-center'>
                     <p>Add from within website to store your ratings!</p>
                 </div>
