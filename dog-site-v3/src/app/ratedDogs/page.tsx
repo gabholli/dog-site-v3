@@ -111,9 +111,9 @@ export default function RatedDogsList() {
         <main className="flex flex-col justify-center items-center p-8 gap-y-8 bg-cover bg-center">
             {session && ratingsList.length > 0 && (
                 <>
-                    {selectedRatings.length > 0 && <h1 className='text-3xl mb-2'>Ratings Summary</h1>}
-                    {selectedRatings.length === 0 && <h1 className='text-3xl mb-2'>No ratings for this filter.</h1>}
-                    <Select options={options} onChange={handleChange} />
+                    {selectedRatings.length > 0 && <h1 className='text-3xl text-center'>Ratings Summary</h1>}
+                    <Select options={options} onChange={handleChange} placeholder="Filter by rating" />
+                    {selectedRatings.length === 0 && <h1 className='text-3xl text-center'>No ratings for this filter.</h1>}
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         {ratingsMap}
                     </div>
