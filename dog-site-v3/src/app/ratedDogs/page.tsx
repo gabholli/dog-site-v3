@@ -4,14 +4,24 @@ import { UserAuth } from '../context/AuthContext'
 import { useEffect, useState } from 'react'
 import { supabase } from "../database/supabaseClient"
 import Link from "next/link"
-import { Rating } from '../types/types'
+import { Rating, RatingOption } from '../types/types'
 import DeleteModal from '../components/DeleteModal'
+import Select from 'react-select'
 
 export default function RatedDogsList() {
     const { session } = UserAuth()
     const [selectedItem, setSelectedItem] = useState<Rating | null>(null)
     const [ratingsList, setRatingsList] = useState<Rating[]>([])
+    const [filterValue, setFilterValue] = useState<number | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
+
+    const options = [
+        { value: 1, label: "1" },
+        { value: 2, label: "2" },
+        { value: 3, label: "3" },
+        { value: 4, label: "4" },
+        { value: 5, label: "5" }
+    ]
 
     useEffect(() => {
         if (!session) return
@@ -37,7 +47,12 @@ export default function RatedDogsList() {
 
     }, [session])
 
-    const ratingsMap = ratingsList.sort((a, b) => a.rating - b.rating)?.map(item => {
+    const selectedRatings = ratingsList.filter(item => {
+        if (filterValue === null) return true
+        return item.rating === filterValue
+    })
+
+    const ratingsMap = selectedRatings.sort((a, b) => a.rating - b.rating)?.map(item => {
         return (
             <div key={item.breed_id} className="text-center flex flex-col gap-y-2">
                 <Link
@@ -62,6 +77,14 @@ export default function RatedDogsList() {
     function handleDelete(breedId: number) {
         const filteredRatings = ratingsList.filter(item => item.breed_id !== breedId)
         setRatingsList(filteredRatings)
+    }
+
+    function handleChange(selectedOption: RatingOption | null) {
+        if (selectedOption) {
+            setFilterValue(selectedOption.value)
+        } else {
+            setFilterValue(null)
+        }
     }
 
     if (loading) {
@@ -89,6 +112,7 @@ export default function RatedDogsList() {
             {session && ratingsList.length > 0 && (
                 <>
                     <h1 className='text-3xl mb-2'>Ratings Summary</h1>
+                    <Select options={options} onChange={handleChange} />
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         {ratingsMap}
                     </div>
