@@ -53,7 +53,7 @@ export default function BreedDetails() {
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-dvh">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 24 24"><path
                     fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z">
                     <animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite"
                         type="rotate" values="0 12 12;360 12 12" /></path></svg>
@@ -72,17 +72,6 @@ export default function BreedDetails() {
         )
     }
 
-    if (!dogData) {
-        return (
-            <div className="flex flex-col justify-center items-center min-h-dvh">
-                <h1 className="text-3xl mb-8 text-center">No breed data found</h1>
-                <Link href="/breeds" className="bg-neutral-100 px-4 py-2 rounded-xl text-xl cursor-pointer hover:underline">
-                    Back to breeds list
-                </Link>
-            </div>
-        )
-    }
-
     return (
         <div className="flex flex-col gap-y-12 p-8 justify-center items-center">
             <Link
@@ -91,14 +80,14 @@ export default function BreedDetails() {
             >
                 &larr; <span className="text-3xl font-bold active:font-extrabold">Back to breeds list</span>
             </Link>
-            {imageData[0]?.url && (
+            {dogData && imageData[0]?.url && (
                 <img className="h-80 w-80 lg:w-1/2 lg:h-auto object-cover rounded-xl shadow-2xl"
                     alt={`${dogData.name} dog breed`}
                     src={imageData[0]?.url} />
             )}
 
-            <h1 className="text-4xl underline text-center font-bold">{dogData.name} facts:</h1>
-            <div className="md:hidden flex flex-col justify-center items-center text-center px-4 
+            {dogData && <h1 className="text-4xl underline text-center font-bold">{dogData.name} facts:</h1>}
+            {dogData && <div className="md:hidden flex flex-col justify-center items-center text-center px-4 
                         py-8 gap-y-10">
                 {dogData.bred_for && <h2 className="text-3xl underline font-semibold">Reasons for breeding:</h2>}
                 {dogData.bred_for && <p className="text-2xl">{dogData.bred_for}</p>}
@@ -114,8 +103,8 @@ export default function BreedDetails() {
                 {dogData.temperament && <p className="text-2xl">{dogData.temperament}</p>}
                 {dogData.weight?.imperial && <h2 className="text-3xl underline font-semibold">Weight in pounds:</h2>}
                 {dogData.weight?.imperial && <p className="text-2xl">{dogData.weight?.imperial}</p>}
-            </div>
-            <table className="max-[767px]:hidden table-fixed border-collapse border border-black">
+            </div>}
+            {dogData && <table className="max-[767px]:hidden table-fixed border-collapse border border-black">
                 <caption className="sr-only">{dogData.name} breed information</caption>
                 <tbody>
                     {
@@ -168,7 +157,7 @@ export default function BreedDetails() {
                         </tr>
                     }
                 </tbody>
-            </table>
+            </table>}
 
         </div >
     )
