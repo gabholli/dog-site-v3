@@ -31,7 +31,9 @@ export default function BreedList() {
                 setError(error)
             })
             .finally(() => {
-                setLoading(false)
+                if (!cancelled) {
+                    setLoading(false)
+                }
             })
 
         return () => {
