@@ -71,6 +71,7 @@ export default function BreedList() {
     function handlePageClick(number: number) {
         setCurrentPage(number)
         setPage(number)
+        window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
     const pagination = pageNumbers.map(number => (
