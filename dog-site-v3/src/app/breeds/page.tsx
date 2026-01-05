@@ -10,13 +10,13 @@ import RatingsStar from "../components/RatingsStar"
 export default function BreedList() {
     const { page, setPage } = UserAuth()
 
-    const [activePage, setActivePage] = useState<number>(1)
-    const [loading, setLoading] = useState(true)
+    const [activePage, setActivePage] = useState<number>(page || 1)
+    const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<Error | null>(null)
     const [dogData, setDogData] = useState<Dog[]>([])
 
-    const [currentPage, setCurrentPage] = useState(page || 1)
-    const [itemsPerPage] = useState(12)
+    const [currentPage, setCurrentPage] = useState<number>(page || 1)
+    const [itemsPerPage] = useState<number>(12)
 
     useEffect(() => {
         let cancelled = false
