@@ -10,6 +10,7 @@ import RatingsStar from "../components/RatingsStar"
 export default function BreedList() {
     const { page, setPage } = UserAuth()
 
+    const [activePage, setActivePage] = useState<number>(1)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<Error | null>(null)
     const [dogData, setDogData] = useState<Dog[]>([])
@@ -75,23 +76,29 @@ export default function BreedList() {
     function handlePageClick(number: number) {
         setCurrentPage(number)
         setPage(number)
+        setActivePage(number)
         window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
-    const pagination = pageNumbers.map(number => (
-        <li
-            key={number}
-            className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded-lg"
-        >
-            <button
-                onClick={() => handlePageClick(number)}
-                aria-label={`Go to page ${number}`}
-                aria-current={currentPage === number ? "page" : undefined}
+    const pagination = pageNumbers.map(number => {
+        const activePageButton = activePage === number ? "bg-neutral-300" : "bg-neutral-100"
+        return (
+            <li
+                key={number}
+                className={`hover:underline active:font-semibold size-8 flex justify-center items-center rounded-lg
+                    ${activePageButton}`}
             >
-                {number}
-            </button>
-        </li>
-    ))
+                <button
+                    onClick={() => handlePageClick(number)}
+                    aria-label={`Go to page ${number}`}
+                    aria-current={currentPage === number ? "page" : undefined}
+                >
+                    {number}
+                </button>
+            </li>
+        )
+    })
+
 
     if (loading) {
         return (
