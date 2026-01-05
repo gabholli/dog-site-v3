@@ -16,7 +16,6 @@ export default function RatedDogsList() {
     const [loading, setLoading] = useState<boolean>(false)
 
     const options = [
-        { value: null, label: "All" },
         { value: 1, label: "1" },
         { value: 2, label: "2" },
         { value: 3, label: "3" },
@@ -108,13 +107,21 @@ export default function RatedDogsList() {
         )
     }
 
+    const shouldCenter = !session || ratingsList.length === 0
+
     return (
-        <main className="flex flex-col justify-start items-center p-8 gap-y-8 min-h-dvh">
+        <main className={`flex flex-col ${shouldCenter ? "justify-center" : "justify-start"}
+             items-center p-8 gap-y-8 min-h-[calc(100dvh-10rem)]`}>
             {session && ratingsList.length > 0 && (
                 <>
+                    <Select options={options} onChange={handleChange} placeholder="Filter by rating" isClearable />
                     {selectedRatings.length > 0 && <h1 className='text-3xl text-center'>Ratings Summary</h1>}
-                    <Select options={options} onChange={handleChange} placeholder="Filter by rating" />
-                    {selectedRatings.length === 0 && <h1 className='text-3xl text-center'>No ratings for this filter.</h1>}
+                    {selectedRatings.length === 0 && (
+                        <div className='flex-1 flex justify-center items-center'>
+                            <h1 className='text-3xl text-center'>No ratings for this filter.</h1>
+                        </div>
+                    )
+                    }
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         {ratingsMap}
                     </div>
