@@ -25,13 +25,13 @@ export default function BreedList() {
         axios
             .get("/api/breeds")
             .then((response) => {
-                setDogData(response.data);
+                setDogData(response.data)
             })
             .catch((error) => {
-                setError(error);
+                setError(error)
             })
             .finally(() => {
-                setLoading(false);
+                setLoading(false)
             })
 
         return () => {
