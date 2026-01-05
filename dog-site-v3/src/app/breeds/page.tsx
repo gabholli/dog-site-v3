@@ -10,7 +10,7 @@ import RatingsStar from "../components/RatingsStar"
 export default function BreedList() {
     const { page, setPage } = UserAuth()
 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState<Error | null>(null)
     const [dogData, setDogData] = useState<Dog[]>([])
 
@@ -25,10 +25,14 @@ export default function BreedList() {
         axios
             .get("/api/breeds")
             .then((response) => {
-                setDogData(response.data)
+                if (!cancelled) {
+                    setDogData(response.data)
+                }
             })
             .catch((error) => {
-                setError(error)
+                if (!cancelled) {
+                    setError(error)
+                }
             })
             .finally(() => {
                 if (!cancelled) {
@@ -41,7 +45,7 @@ export default function BreedList() {
         }
     }, [])
 
-    const dogBreedList = dogData?.map(dog => {
+    const dogBreedList = dogData.map(dog => {
         return (
             <div className="text-center flex flex-col gap-y-2" key={dog.id}>
                 <Link href={`/breeds/${dog.id}`} passHref>
@@ -77,17 +81,21 @@ export default function BreedList() {
     const pagination = pageNumbers.map(number => (
         <li
             key={number}
-            aria-label={`Go to page ${number}`}
-            aria-current={currentPage === number ? "page" : undefined}
             className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded-lg"
         >
-            <button onClick={() => handlePageClick(number)}>{number}</button>
+            <button
+                onClick={() => handlePageClick(number)}
+                aria-label={`Go to page ${number}`}
+                aria-current={currentPage === number ? "page" : undefined}
+            >
+                {number}
+            </button>
         </li>
     ))
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center min-h-dvh">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         fill="currentColor"
@@ -107,7 +115,7 @@ export default function BreedList() {
 
     if (error) {
         return (
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center min-h-dvh">
                 <h1 className="text-3xl mb-8 text-center mt-8">There was an error loading this page...</h1>
                 <Link href="/" passHref>
                     <div className="bg-neutral-100 px-4 py-2 rounded-xl text-xl hover:underline">Return to home</div>
@@ -118,9 +126,9 @@ export default function BreedList() {
 
     return (
         <div className="flex flex-col justify-center items-center p-8 gap-y-8 bg-cover bg-center">
-            <h2 className="font-bold text-2xl">Select a breed:</h2>
+            <h1 className="font-bold text-2xl">Select a breed:</h1>
             <nav className="flex flex-col gap-y-6">
-                {dogData.length > 0 && <h1 className="font-bold text-xl text-center">Pages:</h1>}
+                {dogData.length > 0 && <h2 className="font-bold text-xl text-center">Pages:</h2>}
                 <ul className="list-none flex flex-wrap justify-center gap-x-8 md:gap-x-6 gap-y-4 cursor-pointer">
                     {pagination}
                 </ul>
@@ -130,7 +138,7 @@ export default function BreedList() {
             </div>
             <div>
                 <nav className="flex flex-col gap-y-6">
-                    {dogData.length > 0 && <h1 className="font-bold text-xl text-center">Pages:</h1>}
+                    {dogData.length > 0 && <h2 className="font-bold text-xl text-center">Pages:</h2>}
                     <ul className="list-none flex flex-wrap justify-center gap-x-8 md:gap-x-6 gap-y-4 cursor-pointer">
                         {pagination}
                     </ul>
