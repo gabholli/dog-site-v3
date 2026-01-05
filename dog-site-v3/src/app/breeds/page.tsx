@@ -11,13 +11,14 @@ export default function BreedList() {
     const { page, setPage } = UserAuth()
 
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const [error, setError] = useState<Error | null>(null)
     const [dogData, setDogData] = useState<Dog[]>([])
 
     const [currentPage, setCurrentPage] = useState(page || 1)
     const [itemsPerPage] = useState(12)
 
     useEffect(() => {
+        let cancelled = true
         setLoading(true)
 
         // Fetch from local API route (not external API)
@@ -32,6 +33,10 @@ export default function BreedList() {
             .finally(() => {
                 setLoading(false);
             })
+
+        return () => {
+            cancelled = true
+        }
     }, [])
 
     const dogBreedList = dogData?.map(dog => {
@@ -57,11 +62,11 @@ export default function BreedList() {
     const currentItems = dogBreedList.slice(indexOfFirstItem, indexOfLastItem)
 
     const pageNumbers = []
-    for (let i = 1; i <= Math.ceil(dogBreedList.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(dogData.length / itemsPerPage); i++) {
         pageNumbers.push(i)
     }
 
-    function handlePageClick(number: React.SetStateAction<number>) {
+    function handlePageClick(number: number) {
         setCurrentPage(number)
         setPage(number)
     }
@@ -69,9 +74,11 @@ export default function BreedList() {
     const pagination = pageNumbers.map(number => (
         <li
             key={number}
+            aria-label={`Go to page ${number}`}
+            aria-current={currentPage === number ? "page" : undefined}
             className="hover:underline active:font-semibold size-8 bg-neutral-100 flex justify-center items-center rounded-lg"
         >
-            <a onClick={() => handlePageClick(number)}>{number}</a>
+            <button onClick={() => handlePageClick(number)}>{number}</button>
         </li>
     ))
 
@@ -108,9 +115,9 @@ export default function BreedList() {
 
     return (
         <div className="flex flex-col justify-center items-center p-8 gap-y-8 bg-cover bg-center">
-            <h1 className="font-bold text-2xl">Select a breed:</h1>
+            <h2 className="font-bold text-2xl">Select a breed:</h2>
             <nav className="flex flex-col gap-y-6">
-                {dogData?.length > 0 && <h1 className="font-bold text-xl text-center">Pages:</h1>}
+                {dogData.length > 0 && <h1 className="font-bold text-xl text-center">Pages:</h1>}
                 <ul className="list-none flex flex-wrap justify-center gap-x-8 md:gap-x-6 gap-y-4 cursor-pointer">
                     {pagination}
                 </ul>
@@ -120,7 +127,7 @@ export default function BreedList() {
             </div>
             <div>
                 <nav className="flex flex-col gap-y-6">
-                    {dogData?.length > 0 && <h1 className="font-bold text-xl text-center">Pages:</h1>}
+                    {dogData.length > 0 && <h1 className="font-bold text-xl text-center">Pages:</h1>}
                     <ul className="list-none flex flex-wrap justify-center gap-x-8 md:gap-x-6 gap-y-4 cursor-pointer">
                         {pagination}
                     </ul>
