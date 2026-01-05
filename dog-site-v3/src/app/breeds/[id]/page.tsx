@@ -9,7 +9,7 @@ import { ImageData, DogData } from "@/app/types/types"
 export default function BreedDetails() {
     const { id } = useParams()
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<Error | null>(null)
     const [dogData, setDogData] = useState<DogData | null>(null)
     const [imageData, setImageData] = useState<ImageData[]>([])
     // const searchParams = useSearchParams()
@@ -24,6 +24,8 @@ export default function BreedDetails() {
 
     useEffect(() => {
         if (!id) return
+
+        let cancelled = false
         setLoading(true)
 
         // Prepare both API requests
@@ -41,13 +43,19 @@ export default function BreedDetails() {
                 setError('Failed to load data')
             })
             .finally(() => {
-                setLoading(false)
+                if (!cancelled) {
+                    setLoading(false)
+                }
             })
+
+        return () => {
+            cancelled = true
+        }
     }, [id])
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center mio-h-dvh">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path
                     fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z">
                     <animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite"
@@ -58,9 +66,9 @@ export default function BreedDetails() {
 
     if (error) {
         return (
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center min-h-dvh">
                 <h1 className=" text-3xl mb-8 text-center mt-8">There was an error loading this page...</h1>
-                <Link href="/" className="bg-neutral-100 px-4 py-2 rounded-xl text-xl hover:underline">
+                <Link href="/" className="bg-neutral-100 px-4 py-2 rounded-xl text-xl cursor-pointer hover:underline">
                     Return to home
                 </Link>
             </div>
@@ -75,8 +83,10 @@ export default function BreedDetails() {
             >
                 &larr; <span className="text-3xl font-bold active:font-extrabold">Back to breeds list</span>
             </Link>
-            {imageData[0]?.url && (
-                <img className="size-80 lg:size-1/2 object-cover rounded-xl shadow-2xl" src={imageData[0]?.url}></img>
+            {imageData[0]?.url && dogData && (
+                <img className="size-80 lg:size-1/2 object-cover rounded-xl shadow-2xl"
+                    alt={`${dogData.name} dog breed`}
+                    src={imageData[0]?.url} />
             )}
 
             {dogData && (
