@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
                 'x-api-key': process.env.VITE_SOME_KEY,
                 'X-api-host': 'api.thedogapi.com',
             },
-        });
+        })
 
         return new Response(JSON.stringify(response.data), { status: 200 })
     } catch (error) {
