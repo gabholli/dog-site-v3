@@ -46,23 +46,25 @@ export default function BreedList() {
         }
     }, [])
 
-    const dogBreedList = dogData.map(dog => {
-        return (
-            <div className="text-center flex flex-col gap-y-2" key={dog.id}>
-                <Link href={`/breeds/${dog.id}`} passHref>
-                    <div className="hover:underline active:font-semibold text-2xl">
-                        <img
-                            className="h-80 w-80 object-cover mb-7 rounded-xl shadow-2xl"
-                            src={dog.image.url}
-                            alt={dog.name}
-                        />
-                        {dog.name}
-                    </div>
-                </Link>
-                <RatingsStar dog={dog} />
-            </div>
-        )
-    })
+    const dogBreedList = dogData
+        .filter(dog => dog.image?.url)
+        .map(dog => {
+            return (
+                <div className="text-center flex flex-col gap-y-2" key={dog.id}>
+                    <Link href={`/breeds/${dog.id}`} passHref>
+                        <div className="hover:underline active:font-semibold text-2xl">
+                            <img
+                                className="h-80 w-80 object-cover mb-7 rounded-xl shadow-2xl"
+                                src={dog.image.url}
+                                alt={dog.name}
+                            />
+                            {dog.name}
+                        </div>
+                    </Link>
+                    <RatingsStar dog={dog} />
+                </div>
+            )
+        })
 
     const indexOfLastItem = currentPage * itemsPerPage
     const indexOfFirstItem = indexOfLastItem - itemsPerPage
