@@ -14,6 +14,7 @@ export interface DogData {
 }
 
 export interface Dog {
+    reference_image_id: string | undefined
     id: string
     name: string
     image: {
