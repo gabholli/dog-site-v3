@@ -1,5 +1,5 @@
 # Project Title
-Dog Information Website
+FetchFacts
 
 ## Description
 This project contains files for a dog information website, created using the following:
