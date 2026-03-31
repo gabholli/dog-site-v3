@@ -10,7 +10,7 @@ import BackToTopButton from './components/BackToTopButton'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <title>Dog Information</title>
+      <title>FetchFacts</title>
       <link rel="shortcut icon" type="image/x-icon" href="/Boxer Puppy1.ico" />
       <body className='font-garamond grid grid-rows-[auto_1fr_auto] grid-cols-1 w-full min-h-svh'>
         <AuthContextProvider>
