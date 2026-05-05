@@ -16,7 +16,7 @@ export default function BreedList() {
     const [dogData, setDogData] = useState<Dog[]>([])
 
     const [currentPage, setCurrentPage] = useState<number>(page || 1)
-    const [itemsPerPage] = useState<number>(12)
+    const [itemsPerPage] = useState<number>(36)
 
     useEffect(() => {
         let cancelled = false
