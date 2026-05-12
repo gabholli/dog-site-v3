@@ -51,11 +51,19 @@ export default function BreedList() {
             <div className="text-center flex flex-col gap-y-2" key={dog.id}>
                 <Link href={`/breeds/${dog.id}`} passHref>
                     <div className="hover:underline active:font-semibold text-2xl">
-                        <img
-                            className="h-80 w-80 object-cover mb-7 rounded-xl shadow-2xl"
-                            src={dog.image?.url}
-                            alt={dog.name}
-                        />
+                        {dog.image?.url ? (
+                            <img
+                                className="h-80 w-80 object-cover mb-7 rounded-xl shadow-2xl"
+                                src={dog.image?.url}
+                                alt={dog.name}
+                            />
+                        ) :
+                            <img
+                                src="../../../dog-silhouette.svg"
+                                className="h-80 w-80 object-cover mb-7 rounded-xl shadow-2xl"
+                                alt={dog.name}
+                            />
+                        }
                         {dog.name}
                     </div>
                 </Link>
