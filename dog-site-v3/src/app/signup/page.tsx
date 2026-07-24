@@ -36,13 +36,13 @@ export default function Signup() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSignIn} className="max-w-md m-auto p-4 md:p-20">
+        <div className='w-full max-w-96'>
+            <form onSubmit={handleSignIn} className="w-full m-auto p-4 md:p-20">
                 <h2 className="font-bold pb-2">Sign up today!</h2>
                 <p>
                     Already have an account? <Link className="text-blue-500" href="/login">Sign in</Link>
                 </p>
-                <div className="flex flex-col py-4">
+                <div className="flex flex-col py-4 w-full">
                     {/* <label htmlFor="Email">Email</label> */}
                     <input
                         onChange={(e) => setEmail(e.target.value)}
@@ -54,7 +54,7 @@ export default function Signup() {
                         placeholder="Email"
                     />
                 </div>
-                <div className="flex flex-col py-4">
+                <div className="flex flex-col py-4 w-full">
                     {/* <label htmlFor="Password">Password</label> */}
                     <input
                         onChange={(e) => setPassword(e.target.value)}

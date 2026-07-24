@@ -39,13 +39,13 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSignIn} className="max-w-md m-auto p-4 md:p-20">
+        <div className="w-full max-w-96">
+            <form onSubmit={handleSignIn} className="w-full m-auto p-4 md:p-20">
                 <h2 className="font-bold pb-2">Sign in</h2>
                 <p>
                     {"Don't have an account yet?"} <Link className="text-blue-500" href="/signup">Sign up</Link>
                 </p>
-                <div className="flex flex-col py-4">
+                <div className="flex flex-col py-4 w-full">
                     {/* <label htmlFor="Email">Email</label> */}
                     <input
                         onChange={(e) => setEmail(e.target.value)}
@@ -57,7 +57,7 @@ export default function Login() {
                         placeholder="Email"
                     />
                 </div>
-                <div className="flex flex-col py-4">
+                <div className="flex flex-col py-4 w-full">
                     {/* <label htmlFor="Password">Password</label> */}
                     <input
                         onChange={(e) => setPassword(e.target.value)}
