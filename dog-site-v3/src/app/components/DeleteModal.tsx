@@ -58,8 +58,18 @@ export default function DeleteModal(
                 <div className="bg-neutral-200 p-4 md:text-2xl">
                     <h1 className="text-center">Are you sure you want to delete this breed?</h1>
                     <div className="flex justify-center items-center gap-x-4">
-                        <button onClick={deleteBreed}>Yes</button>
-                        <button onClick={() => onClose()}>No</button>
+                        <button
+                            className="hover:cursor-pointer"
+                            onClick={deleteBreed}
+                        >
+                            Yes
+                        </button>
+                        <button
+                            className="hover:cursor-pointer"
+                            onClick={() => onClose()}
+                        >
+                            No
+                        </button>
                     </div>
                 </div>
 
