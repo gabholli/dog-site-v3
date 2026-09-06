@@ -9,7 +9,7 @@ This project contains files for a dog information website, created using the fol
 - Next.js
 - Supabase
 
-![Screenshot of FetchFacts breed list with ratings](./public/dog-info-site.png
+![Screenshot of FetchFacts breed list with ratings](./public/dog-info-site.png)
 
 ## Getting Started
 ### Dependencies
